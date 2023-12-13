@@ -1,0 +1,8 @@
+-- Выгрузка из базы данных
+python -Xutf8 manage.py dumpdata -o db.json
+
+-- Загрузка в базу данных
+python manage.py loaddata Chemistry/fixtures/db.json
+
+-- Выгрузка из определенной таблицы
+python -Xutf8 manage.py dumpdata Chemistry.Plant -o  db.json

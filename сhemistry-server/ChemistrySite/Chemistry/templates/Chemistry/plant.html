@@ -1,0 +1,93 @@
+{% extends 'Chemistry/base.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block title %}
+<title>{{ title.name }}</title>
+{% endblock %}
+
+{% block main-title %}
+{{ title.name }}
+{% endblock %}
+
+{% block url %}
+<div class="url-blog">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'substances_list' %}">Главная страница</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a href="{% url 'plant_list' title.category_plant.slug %}">{{ title.category_plant }}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ title.name }}</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="info-container">
+        <div class="row">
+            <div class="col-4" style="width: 33%;">
+              <div id="list-example" class="list-group">
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'name' %}">{% get_verbose_field_name title 'name' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'term' %}">{% get_verbose_field_name title 'term' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'external_sign' %}">{% get_verbose_field_name title 'external_sign' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'distribution' %}">{% get_verbose_field_name title 'distribution' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'chemical_composition' %}">{% get_verbose_field_name title 'chemical_composition' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'harvesting_drying' %}">{% get_verbose_field_name title 'harvesting_drying' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'standardization' %}">{% get_verbose_field_name title 'standardization' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'microscopy' %}">{% get_verbose_field_name title 'microscopy' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'signs' %}">{% get_verbose_field_name title 'signs' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'numerical_indicators' %}">{% get_verbose_field_name title 'numerical_indicators' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'keeping' %}">{% get_verbose_field_name title 'keeping' %}</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'usage' %}">{% get_verbose_field_name title 'usage' %}</a>
+              </div>
+            </div>
+            <div class="col-8" style="width: 65%">
+              <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                    <h4 id="list-item-{% get_verbose_field_name title 'name' %}">{% get_verbose_field_name title 'name' %}</h4>
+                    <p>{{ title.name }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'term' %}">{% get_verbose_field_name title 'term' %}</h4>
+                    <p>{{ title.term }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'external_sign' %}">{% get_verbose_field_name title 'external_sign' %}</h4>
+                    <p>{{ title.external_sign }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'distribution' %}">{% get_verbose_field_name title 'distribution' %}</h4>
+                    <p>{{ title.distribution }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'chemical_composition' %}">{% get_verbose_field_name title 'chemical_composition' %}</h4>
+                    <p>{{ title.chemical_composition }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'harvesting_drying' %}">{% get_verbose_field_name title 'harvesting_drying' %}</h4>
+                    <p>{{ title.harvesting_drying }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'standardization' %}">{% get_verbose_field_name title 'standardization' %}</h4>
+                    <p>{{ title.standardization }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'microscopy' %}">{% get_verbose_field_name title 'microscopy' %}</h4>
+                    <p>{{ title.microscopy }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'signs' %}">{% get_verbose_field_name title 'signs' %}</h4>
+                    <p>{{ title.signs }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'numerical_indicators' %}">{% get_verbose_field_name title 'numerical_indicators' %}</h4>
+                    <p>{{ title.numerical_indicators }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'keeping' %}">{% get_verbose_field_name title 'keeping' %}</h4>
+                    <p>{{ title.keeping }}</p>
+                    <h4 id="list-item-{% get_verbose_field_name title 'usage' %}">{% get_verbose_field_name title 'usage' %}</h4>
+                    <p>{{ title.usage }}</p>
+              </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+        window.onscroll = function() {myFunction()};
+
+        var listGroup = document.getElementById("list-example");
+        var fixedPanel = document.querySelector(".list-group");
+
+        var sticky = listGroup.offsetTop;
+
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            fixedPanel.classList.add("fixed-panel");
+          } else {
+            fixedPanel.classList.remove("fixed-panel");
+          }
+        }
+</script>
+{% endblock %}

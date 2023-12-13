@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% block title %}<title>PlantMed</title>{% endblock %}
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="brand-text navbar-brand" href="{% url 'substances_list' %}">PlantMed.USMA</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form action="{% url 'search_plant' %}" class="d-flex" method="get">
+          <input name="name" class="form-control me-2" type="text" placeholder="Поиск" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Поиск</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <header class="main">
+    <div class="main-image">
+      <img src="{% static 'img/header.jpg' %}" alt="Цветы">
+      <div class="main-title">
+        {% block main-title %} {% endblock %}
+      </div>
+    </div>
+  </header>
+
+  {% block url %} {% endblock %}
+
+  {% block content %} {% endblock %}
+
+  {% block pagination %} {% endblock %}
+
+
+  <footer>
+    <div class="footer-title">
+      &copy; 2023 PlantMed.USMA. Все права защищены.
+    </div>
+    <ul class="developer-list">
+      <li>Разработчики:</li>
+      <li>Рубан Ирина Валерьевна - УГМУ.
+        <a href="https://t.me/IrinaR20"><i class="fab fa-telegram telegram-icon"></i></a>
+      </li>
+      <li>Васильева Алина Владимировна - УГМУ.
+        <a href="https://t.me/votbic"><i class="fab fa-telegram telegram-icon"></i></a>
+      </li>
+      <li>Зеленский Олег Денисович - УрФУ.
+        <a href="https://t.me/Bratella065"><i class="fab fa-telegram telegram-icon"></i></a>
+      </li>
+    </ul>
+  </footer>
+  {% block js %} {% endblock %}
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

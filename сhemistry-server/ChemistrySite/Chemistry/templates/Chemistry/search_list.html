@@ -1,0 +1,21 @@
+{% extends 'Chemistry/base.html' %}
+
+{% block title %}<title>{{ title }}</title> {% endblock %}
+
+{% block main-title %} Поиск по: {{ title }} {% endblock %}
+
+{% block content %}
+<div class="blog-btn-card">
+    {% if not object_list %}
+        <div class="blog-text-card">
+          Увы, но такого здесь нет!
+        </div>
+    {% else %}
+      {% for list in object_list %}
+    <a class="btn-card btn btn-outline-success" href="{{ list.get_absolute_url }}">
+        {{ list }}
+    </a>
+      {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'Chemistry/base.html' %}
+
+{% block title %} <title> Категория: {{ title }}</title> {% endblock %}
+
+{% block main-title %} {{ title }} {% endblock %}
+
+{% block url %}
+<div class="url-blog">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'substances_list' %}">Главная страница</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="blog-btn-card">
+    <div class="blog-text-card">
+      Категории
+    </div>
+      {% for plant in plants %}
+    <a class="btn-card btn btn-outline-success" href="{{ plant.get_absolute_url }}">
+        {{ plant }}
+    </a>
+      {% endfor %}
+</div>
+{% endblock %}
+
+{% block pagination %}
+{% if is_paginated %}
+  <div class="pagination-blog">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
+          <a class="page-link" href="{% if page_obj.has_previous %} {% url 'paginator' page_obj.previous_page_number %} {% else %} # {% endif %}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+          {% for page in paginator.page_range %}
+            <li class="page-item"><a class="page-link" href="{% url 'paginator' page %}">{{ page }}</a></li>
+          {% endfor %}
+        <li class="page-item {% if not page_obj.has_next %} disabled {% endif %}">
+          <a class="page-link" href="{% if page_obj.has_next %} {% url 'paginator' page_obj.next_page_number %} {% else %} # {% endif %}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+{% endif %}
+{% endblock %}

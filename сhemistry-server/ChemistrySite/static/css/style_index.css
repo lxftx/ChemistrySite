@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
+
+
+body {
+    font-family: 'Hedvig Letters Serif', serif;
+    
+    margin: 0;
+    padding: 0;
+  }
+
+.navbar {
+    background-color: #fff;
+}
+
+.brand-text {
+  font-size: 27px;
+  font-family: 'Hedvig Letters Serif', serif;
+  font-weight: bold;
+}
+
+/* #c7c1c1 */
+.container-fluid {
+    margin: 0 30px 0 30px;
+}
+
+.d-flex {
+    width: 100%;
+    justify-content: right;
+}
+
+.form-control {
+    width: 50%;
+    border-color: #198754;
+}
+
+.btn-outline-success {
+    width: 10%;
+}
+
+  header.main {
+    position: relative;
+    height: 400px; /* Высота изображения */
+    overflow: hidden; /* Обрезаем текст, который может выйти за пределы изображения */
+  }
+
+  .main-image {
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .main-title {
+    font-family: 'Hedvig Letters Serif', serif;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black; /* Цвет текста */
+    font-size: 55px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    text-align: center;
+  }
+
+
+.blog-btn-card {
+  margin: 50px;
+}
+
+.blog-text-card {
+  display: block;
+  font-family: 'Hedvig Letters Serif', serif;
+  font-weight: bold; /* Жирный шрифт */
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 50px;
+  color: #198754;
+}
+
+.btn-card {
+  font-family: 'Hedvig Letters Serif', serif;
+  font-weight: bold; /* Жирный шрифт */
+  height: 100px;
+  width: 100%;
+  font-size: 35px;
+  padding-top: 20px;
+  margin-bottom: 25px;
+}
+
+.pagination {
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.page-link {
+  color: #198754;
+}
+
+footer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-title {
+  display: block;
+  text-align: center;
+}
+
+.developer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.developer-list li {
+  margin-right: 10px;
+}
+
+.telegram-icon {
+  margin-right: 5px;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.info-container {
+  margin: 20px;
+}
+
+.breadcrumb {
+  margin: 20px 50px;
+  padding: 10px;
+  font-size: 20px;
+    /* text-decoration: none; */
+  border: 2px;
+  border-style: solid;
+  border-color: #198754;
+  border-radius: 10px;
+}
+
+.breadcrumb a {
+  color: #198754;
+}
+
+.list-group {
+  position: relative;
+}
+
+.list-group a {
+    font-size: 20px;
+}
+
+.scrollspy-example h4 {
+    font-size: 30px;
+}
+
+.scrollspy-example p {
+    font-size: 20px;
+}
+
+.list-group-item {
+  color: #198754;
+  border-color: #198754;
+}
+
+.list-group-item:hover {
+  color: #198754;
+}
+
+.list-group-item.active {
+  color: #fff;
+  background-color: #198754;
+  border-color: #198754;
+}
+
+
+.fixed-panel {
+  position: fixed;
+  top: 20px; /* Регулируйте это значение по вашему усмотрению */
+  width: 31%; /* Регулируйте ширину фиксированной панели */
+  z-index: 1000;
+}
