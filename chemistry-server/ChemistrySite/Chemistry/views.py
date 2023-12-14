@@ -42,7 +42,7 @@ class PlantView(DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(PlantView, self).get_context_data(**kwargs)
         context['title'] = Plant.objects.get(slug=self.kwargs.get('slug_plant'))
-        context['images'] = Images.objects.filter(plant__slug=self.kwargs.get('slug_plant'))
+        context['images'] = Images.objects.filter(plant=self.kwargs.get('slug_plant'))
         return context
 
     def get_object(self, queryset=None):

@@ -10,7 +10,8 @@ from import_export.widgets import ForeignKeyWidget
 
 # Register your models here.
 
-admin.site.register(Images)
+
+admin.site.register(Substances)
 
 class ImagesAdmin(admin.TabularInline):
     model = Images

@@ -7,7 +7,28 @@
 {% endblock %}
 
 {% block main-title %}
-{{ title.name }}
+<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    {% for id in images.count|create_range %}
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{id}}" class="{% if id == 0 %} active {% endif %}" aria-current="true" aria-label="Slide {{id}}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+      {% for image in images %}
+    <div class="carousel-item active">
+      <img src="{{ image.image.url }}" class="d-block w-100" alt="...">
+    </div>
+      {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 {% endblock %}
 
 {% block url %}
@@ -21,6 +42,11 @@
     </nav>
 </div>
 {% endblock %}
+
+{% block image %}
+
+{% endblock %}
+
 
 {% block content %}
 <div class="info-container">

@@ -28,15 +28,15 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
-          <a class="page-link" href="{% if page_obj.has_previous %} {% url 'paginator' page_obj.previous_page_number %} {% else %} # {% endif %}" aria-label="Previous">
+          <a class="page-link" href="{% if page_obj.has_previous %} {% url 'paginator_substances' page_obj.previous_page_number %} {% else %} # {% endif %}" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
           {% for page in paginator.page_range %}
-            <li class="page-item"><a class="page-link" href="{% url 'paginator' page %}">{{ page }}</a></li>
+            <li class="page-item"><a class="page-link" href="{% url 'paginator_substances' page %}">{{ page }}</a></li>
           {% endfor %}
         <li class="page-item {% if not page_obj.has_next %} disabled {% endif %}">
-          <a class="page-link" href="{% if page_obj.has_next %} {% url 'paginator' page_obj.next_page_number %} {% else %} # {% endif %}" aria-label="Next">
+          <a class="page-link" href="{% if page_obj.has_next %} {% url 'paginator_substances' page_obj.next_page_number %} {% else %} # {% endif %}" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
