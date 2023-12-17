@@ -1,0 +1,24 @@
+{% extends "Chemistry/base_test.html" %}
+{% load static %}
+
+{% block title %} <title>Teст по теме {{test.name}}</title> {% endblock %}
+
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    {% for question, form in form_list %}
+      <div class="test-card card">
+        {% if question.name_image %}
+          <img src="{{ question.name_image.url }}" style="" class="thumbnail card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+          {% if question.name_text %}
+            <h5 class="card-title">{{ question.name_text }}</h5>
+          {% endif %}
+          {{ form.answer }}
+        </div>
+      </div>
+    {% endfor %}
+    <button type="submit" class="test-card-btn btn btn-outline-success">Отправить тест</button>
+  </form>
+{% endblock %}

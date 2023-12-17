@@ -1,0 +1,16 @@
+{% extends 'Chemistry/base_test.html' %}
+
+
+{% block title %}
+<title>{{ test.name }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="card-test-info card">
+  <div class="card-test-body card-body">
+    <h5 class="card-test-title card-title">Тест по разделу {{ test.substances.name }}</h5>
+    <p class="card-test-text card-text">Всего вопросов - {{ questions.count }}</p>
+    <a href="{% url 'substances_test' test.substances.slug test.pk %}" type="submit" class="card-test-btn btn btn-success" style="width:100%">Перейти к тесту</a>
+  </div>
+</div>
+{% endblock %}

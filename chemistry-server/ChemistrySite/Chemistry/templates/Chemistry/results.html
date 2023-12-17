@@ -1,0 +1,36 @@
+{% extends "Chemistry/base_test.html" %}
+{% load static %}
+
+{% block title %} <title>Результаты</title> {% endblock %}
+
+{% block content %}
+  <h2>Результаты теста "{{ test.name }}"</h2>
+
+  {% for result in result_data %}
+    <div class="test-card card">
+      {% if result.question.name_image %}
+        <img src="{{ result.question.name_image.url }}" class="thumbnail card-img-top" alt="...">
+
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ result.question.name_text }}</h5>
+
+        {% for answer in result.answers %}
+          {% if answer.name_true %}
+            <p style="color: green;">Правильный ответ: {{ answer.name }}</p>
+          {% endif %}
+        {% endfor %}
+
+        {% if result.decision %}
+          {% if result.decision.answer.name_true %}
+            <p style="color: green;">Ваш ответ: {{ result.decision.answer.name }}</p>
+          {% else %}
+            <p style="color: red;">Ваш ответ: {{ result.decision.answer.name }} (неправильный)</p>
+          {% endif %}
+        {% else %}
+          <p style="color: red;">Вы не ответили на этот вопрос</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

@@ -10,6 +10,18 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{% url 'substances_list' %}">Главная страница</a></li>
           <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+            {% if tests.count %}
+              <div class="test-item btn-group">
+                  <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Тесты по разделу
+                  </button>
+                  <ul class="dropdown-menu">
+                    {% for test in tests %}
+                      <li><a class="dropdown-item" href="{{ test.get_absolute_url }}">{{ test.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+              </div>
+            {% endif %}
         </ol>
     </nav>
 </div>

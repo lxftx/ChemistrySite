@@ -16,7 +16,7 @@
   <div class="carousel-inner">
       {% for image in images %}
     <div class="carousel-item active">
-      <img src="{{ image.image.url }}" class="d-block w-100" alt="...">
+      <img src="{{ image.image.url }}" class="thumbnail d-block w-100" alt="..." onclick="openFullscreen(this)">
     </div>
       {% endfor %}
   </div>
@@ -43,9 +43,6 @@
 </div>
 {% endblock %}
 
-{% block image %}
-
-{% endblock %}
 
 
 {% block content %}
@@ -53,46 +50,70 @@
         <div class="row">
             <div class="col-4" style="width: 33%;">
               <div id="list-example" class="list-group">
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'name' %}">{% get_verbose_field_name title 'name' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'term' %}">{% get_verbose_field_name title 'term' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'external_sign' %}">{% get_verbose_field_name title 'external_sign' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'distribution' %}">{% get_verbose_field_name title 'distribution' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'chemical_composition' %}">{% get_verbose_field_name title 'chemical_composition' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'harvesting_drying' %}">{% get_verbose_field_name title 'harvesting_drying' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'standardization' %}">{% get_verbose_field_name title 'standardization' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'microscopy' %}">{% get_verbose_field_name title 'microscopy' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'signs' %}">{% get_verbose_field_name title 'signs' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'numerical_indicators' %}">{% get_verbose_field_name title 'numerical_indicators' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'keeping' %}">{% get_verbose_field_name title 'keeping' %}</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'usage' %}">{% get_verbose_field_name title 'usage' %}</a>
+                    {% if title.name %} <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'name' %}">{% get_verbose_field_name title 'name' %}</a>{% endif %}
+                    {% if title.term %} <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'term' %}">{% get_verbose_field_name title 'term' %}</a>{% endif %}
+                    {% if title.external_sign %} <a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'external_sign' %}">{% get_verbose_field_name title 'external_sign' %}</a>{% endif %}
+                    {% if title.distribution %}<a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'distribution' %}">{% get_verbose_field_name title 'distribution' %}</a>{% endif %}
+                    {% if title.chemical_composition %}<a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'chemical_composition' %}">{% get_verbose_field_name title 'chemical_composition' %}</a>{% endif %}
+                    {% if title.harvesting_drying %}<a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'harvesting_drying' %}">{% get_verbose_field_name title 'harvesting_drying' %}</a>{% endif %}
+                    {% if title.standardization %}<a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'standardization' %}">{% get_verbose_field_name title 'standardization' %}</a>{% endif %}
+                    {% if title.microscopy %}<a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'microscopy' %}">{% get_verbose_field_name title 'microscopy' %}</a>{% endif %}
+                    {% if title.signs %}<a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'signs' %}">{% get_verbose_field_name title 'signs' %}</a>{% endif %}
+                    {% if title.numerical_indicators %}<a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'numerical_indicators' %}">{% get_verbose_field_name title 'numerical_indicators' %}</a>{% endif %}
+                    {% if title.keeping %}<a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'keeping' %}">{% get_verbose_field_name title 'keeping' %}</a>{% endif %}
+                    {% if title.usage %}<a class="list-group-item list-group-item-action" href="#list-item-{% get_verbose_field_name title 'usage' %}">{% get_verbose_field_name title 'usage' %}</a>{% endif %}
               </div>
             </div>
             <div class="col-8" style="width: 65%">
               <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-                    <h4 id="list-item-{% get_verbose_field_name title 'name' %}">{% get_verbose_field_name title 'name' %}</h4>
-                    <p>{{ title.name }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'term' %}">{% get_verbose_field_name title 'term' %}</h4>
-                    <p>{{ title.term }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'external_sign' %}">{% get_verbose_field_name title 'external_sign' %}</h4>
-                    <p>{{ title.external_sign }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'distribution' %}">{% get_verbose_field_name title 'distribution' %}</h4>
-                    <p>{{ title.distribution }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'chemical_composition' %}">{% get_verbose_field_name title 'chemical_composition' %}</h4>
-                    <p>{{ title.chemical_composition }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'harvesting_drying' %}">{% get_verbose_field_name title 'harvesting_drying' %}</h4>
-                    <p>{{ title.harvesting_drying }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'standardization' %}">{% get_verbose_field_name title 'standardization' %}</h4>
-                    <p>{{ title.standardization }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'microscopy' %}">{% get_verbose_field_name title 'microscopy' %}</h4>
-                    <p>{{ title.microscopy }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'signs' %}">{% get_verbose_field_name title 'signs' %}</h4>
-                    <p>{{ title.signs }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'numerical_indicators' %}">{% get_verbose_field_name title 'numerical_indicators' %}</h4>
-                    <p>{{ title.numerical_indicators }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'keeping' %}">{% get_verbose_field_name title 'keeping' %}</h4>
-                    <p>{{ title.keeping }}</p>
-                    <h4 id="list-item-{% get_verbose_field_name title 'usage' %}">{% get_verbose_field_name title 'usage' %}</h4>
-                    <p>{{ title.usage }}</p>
+                    {% if title.name %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'name' %}">{% get_verbose_field_name title 'name' %}</h4>
+                        <p> {{ title.name }}</p>
+                    {% endif %}
+                    {% if title.term %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'term' %}">{% get_verbose_field_name title 'term' %}</h4>
+                        <p>{{ title.term }}</p>
+                    {% endif %}
+                    {% if title.external_sign %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'external_sign' %}">{% get_verbose_field_name title 'external_sign' %}</h4>
+                        <p>{{ title.external_sign }}</p>
+                    {% endif %}
+                    {% if title.distribution %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'distribution' %}">{% get_verbose_field_name title 'distribution' %}</h4>
+                        <p>{{ title.distribution }}</p>
+                    {% endif %}
+                    {% if title.chemical_composition %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'chemical_composition' %}">{% get_verbose_field_name title 'chemical_composition' %}</h4>
+                        <p>{{ title.chemical_composition }}</p>
+                    {% endif %}
+                    {% if title.harvesting_drying %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'harvesting_drying' %}">{% get_verbose_field_name title 'harvesting_drying' %}</h4>
+                        <p>{{ title.harvesting_drying }}</p>
+                    {% endif %}
+                    {% if title.standardization %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'standardization' %}">{% get_verbose_field_name title 'standardization' %}</h4>
+                        <p>{{ title.standardization }}</p>
+                    {% endif %}
+                    {% if title.microscopy %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'microscopy' %}">{% get_verbose_field_name title 'microscopy' %}</h4>
+                        <p>{{ title.microscopy }}</p>
+                    {% endif %}
+                    {% if title.signs %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'signs' %}">{% get_verbose_field_name title 'signs' %}</h4>
+                        <p>{{ title.signs }}</p>
+                    {% endif %}
+                    {% if title.numerical_indicators %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'numerical_indicators' %}">{% get_verbose_field_name title 'numerical_indicators' %}</h4>
+                        <p>{{ title.numerical_indicators }}</p>
+                    {% endif %}
+                    {% if title.keeping %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'keeping' %}">{% get_verbose_field_name title 'keeping' %}</h4>
+                        <p>{{ title.keeping }}</p>
+                    {% endif %}
+                    {% if title.usage %}
+                        <h4 id="list-item-{% get_verbose_field_name title 'usage' %}">{% get_verbose_field_name title 'usage' %}</h4>
+                        <p>{{ title.usage }}</p>
+                    {% endif %}
               </div>
             </div>
         </div>

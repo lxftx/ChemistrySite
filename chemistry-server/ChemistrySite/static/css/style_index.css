@@ -4,8 +4,10 @@
 body {
     font-family: 'Hedvig Letters Serif', serif;
     
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Это гарантирует, что контент займет минимум 100% высоты окна просмотра. */
     margin: 0;
-    padding: 0;
   }
 
 .navbar {
@@ -39,7 +41,7 @@ body {
 
   header.main {
     position: relative;
-    height: 400px; /* Высота изображения */
+    height: 525px; /* Высота изображения */
     overflow: hidden; /* Обрезаем текст, который может выйти за пределы изображения */
   }
 
@@ -56,7 +58,7 @@ body {
   .main-title {
     font-family: 'Hedvig Letters Serif', serif;
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: black; /* Цвет текста */
@@ -189,4 +191,85 @@ footer {
 
 .carousel {
     margin: 0 20px;
+}
+
+.test-item {
+    display: block;
+    position: absolute;
+    left: 86%;
+}
+
+
+.card-test-info {
+    width: 80%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top:80px;
+    margin-bottom:80px;
+}
+
+.card-test-body {
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+.card-test-title {
+    text-align: center;
+    font-size: 35px;
+}
+
+.card-test-text {
+    text-align: center;
+    font-size: 30px;
+}
+
+.card-test {
+    width: 80%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    border-color: #198754;
+}
+
+.test-card-body {
+    margin:20px;
+}
+
+.test-card-title {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.test-card{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+    border-color: #198754;
+}
+
+
+.test-card-btn {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-color: #198754;
+    background-color: white;
+    color:#198754;
+}
+
+
+.thumbnail {
+    margin: 0 auto;
+    width: 400px;
+    transition: transform 0.3s ease-in-out;
+}
+
+        /* Стили для увеличенного размера картинки */
+.thumbnail:hover {
+    transform: scale(1.5);
 }
